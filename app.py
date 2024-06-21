@@ -11,7 +11,6 @@ def predict_start_date():
     try:
         # Receive data from the request body
         data = request.get_json()
-
         # Prepare the data in a DataFrame format
         df = pd.DataFrame({
             'date': [datetime(entry["startYear"], entry["startMonth"], entry["startDay"]) for entry in data],
@@ -35,6 +34,7 @@ def predict_start_date():
         response = {
             "predicted_start_date": predicted_start_date.strftime("%d %B %Y")
         }
+        print(response)
         return jsonify(response)
 
     except Exception as e:
